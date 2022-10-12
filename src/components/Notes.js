@@ -22,7 +22,6 @@ const Notes = () => {
     const refClose = useRef(null)
 
     const handleClick = (e) => {
-        console.log('Handled click event' ,note);
         editNote(note.id, note.etitle, note.edescription, note.etag);
         refClose.current.click();
 
@@ -51,11 +50,11 @@ const Notes = () => {
                             <form className="my-3">
                                 <div className="mb-3">
                                     <label htmlFor="etitle" className="form-label">Title</label>
-                                    <input type="text" className="form-control" value={note.etitle} id="etitle" name="etitle" aria-describedby="emailHelp" onChange={onChange} />
+                                    <input type="text" className="form-control" value={note.etitle} id="etitle" name="etitle" aria-describedby="emailHelp" onChange={onChange} minLength={5} required/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="edescription" className="form-label">Description</label>
-                                    <input type="text" className="form-control" value={note.edescription} id="edescription" name="edescription" onChange={onChange} />
+                                    <input type="text" className="form-control" value={note.edescription} id="edescription" name="edescription" onChange={onChange} minLength={5} required/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="etag" className="form-label">tag</label>
@@ -73,6 +72,9 @@ const Notes = () => {
 
             <div className="row my-3">
                 <h2>You Notes</h2>
+                <div className="container mx-2">
+                {notes.length===0 && 'No notes to display'}
+                </div>
                 {notes.map((note) => {
                     return <Noteitem key={note._id} updateNote={updateNote} note={note} />
                 })}
