@@ -6,7 +6,7 @@ const Noteitem = (props) => {
     const {deleteNote} = context;
     const { note, updateNote, showAlert } = props;
     return (
-        <div className="col-md-3">
+        <div className="col-md-4">
             <div className="card my-2">
                 <div className="card-body">
                     <div className="d-flex align-items-center">
